@@ -18,7 +18,10 @@ def show_me(widget):
 def menuState(filemenu, index, newstate):   #use this when needing to change state of menu
     filemenu.entryconfigure(index, state=newstate)
 
+# TODO: make MLDTfilename and MLDTfilesize global functions!!!
+
 def openfile(): ### Open the file dialog and sets filename to MLDTfilename, sets filesize to MLDTfilesize
+    # TODO: Add an if statement if you already have a file loaded if you're sure you want to go through with this
     MLDTfilename = filedialog.askopenfilename(filetypes=[("Save file", ".sav")])
     print(MLDTfilename)
     MLDTfilesize = os.stat(MLDTfilename).st_size #Get filesize, if 8 then ML4_000 if 96688 then ML4_001 window otherwise fail
@@ -28,27 +31,18 @@ def openfile(): ### Open the file dialog and sets filename to MLDTfilename, sets
         menuState(filemenu, 1, NORMAL)
         show_me(frameML000)
         hide_me(frameML00x)
-        MLDToldfilename = MLDTfilename
-        MLDToldfilesize = 8
     elif MLDTfilesize == 96688:
         print("Loaded %s!" % MLDTfilename[-11:])
         menuState(filemenu, 1, NORMAL)
         show_me(frameML00x)
         hide_me(frameML000)
-        MLDToldfilename = MLDTfilename
-        MLDToldfilesize = 96688
     else:
-        if MLDToldfilesize == 8 or 96688:
-            print("The loaded file does not appear to be a Mario & Luigi: Dream Team save file. Aborting loading save file.")
-            MLDTfilename = MLDToldfilename
-            MLDTfilesize = MLDToldfilesize
-        else:
-            print("The loaded file does not appear to be a Mario & Luigi: Dream Team save file. Nothing changed.")
+        print("The loaded file does not appear to be a Mario & Luigi: Dream Team save file. Aborting save file.")
+        menuState(filemenu, 1, DISABLED)
+        hide_me(frameML000)
+        hide_me(frameML00x)
 
 def closefile():
-    MLDTfilename = ""
-    MLDTfilesize = 0
-    print(f"MLDTfilename is {MLDTfilename} while MLDTfilesize is {MLDTfilesize}.")
     menuState(filemenu, 1, DISABLED)
     hide_me(frameML000)
     hide_me(frameML00x)
@@ -62,17 +56,18 @@ filemenu.add_command(label="Open save file...", command=openfile)
 filemenu.add_command(label="Close save file", command=closefile, state=DISABLED)
 mainWindow.config(menu=menubar)
 
+### Main frames
+frameML000 = Frame(mainWindow) # Frame for title screen save editing
+frameML00x = Frame(mainWindow) # Frame for main save file editing
 
-frameML000 = Frame(mainWindow)
-frameML00x = Frame(mainWindow)
-
+### Title Screen Frame
 TextTest = Label(frameML000, text="This save file has 8 bytes!")
+TextTest.pack()
+
+### Main Save Editing
 TextTest2= Label(frameML00x, text="This save file has 96688 bytes! Haha!")
 MarioStatHP = Spinbox(frameML00x, from_=1, to=999)
-TextTest.pack()
 TextTest2.pack()
 MarioStatHP.pack()
-
-
 
 mainWindow.mainloop()
