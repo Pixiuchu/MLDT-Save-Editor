@@ -14,7 +14,7 @@ values = [[  0, 0x74E, 2, "Mario Current HP"], #Fully Implemented
           [ 12, 0x76E, 2, "Mario BEANS Speed"],
           [ 13, 0x772, 2, "Mario BEANS Stache"],
           [ 14, 0x760, 2, "Mario LEVEL Max HP"],
-          [ 15, 0x764, 2, "Mario LEVEL Max HP"],
+          [ 15, 0x764, 2, "Mario LEVEL Max BP"],
           [ 16, 0x768, 2, "Mario LEVEL Power"],
           [ 17, 0x76C, 2, "Mario LEVEL Defense"],
           [ 18, 0x770, 2, "Mario LEVEL Speed"],
@@ -23,17 +23,57 @@ values = [[  0, 0x74E, 2, "Mario Current HP"], #Fully Implemented
           [ 20, 0x778, 3, "Mario EXP"], #Fully Implemented
           [ 21, 0x77B, 1, "Mario Level"], #WIP
           [ 22, 0x77C, 3, "Mario EXP to next level"],
-          [ 23, 0x780, 2, "Mario Boots"],
-          [ 24, 0x782, 2, "Mario Hammers"],
-          [ 25, 0x784, 2, "Mario Gear 1"], # Byte 1 = n, byte 2 = 0x30 if active
-          [ 26, 0x786, 2, "Mario Gear 2"],
-          [ 27, 0x788, 2, "Mario Gear 3"],
-          [ 28, 0x78A, 2, "Select Badge"], # Byte 1 = n, byte 2 = 0x20 if active
-          [ 29, 0x78C, 2, "Rank Upgrade 1"],
-          [ 30, 0x78E, 2, "Rank Upgrade 2"],
-          [ 31, 0x790, 2, "Rank Upgrade 3"],
-          [ 32, 0x792, 2, "Rank Upgrade 4"],
-          [ 33, 0x794, 2, "Rank Upgrade 5"], # Byte 1 = n, byte 2 = 0xE0 if active
+          [ 23, 0x77F, 1, "Mario Rank"],
+          [ 24, 0x780, 2, "Mario Boots"],
+          [ 25, 0x782, 2, "Mario Hammers"],
+          [ 26, 0x784, 2, "Mario Gear 1"], # Byte 1 = n, byte 2 = 0x30 if active
+          [ 27, 0x786, 2, "Mario Gear 2"],
+          [ 28, 0x788, 2, "Mario Gear 3"],
+          [ 29, 0x78A, 2, "Mario Select Badge"], # Byte 1 = n, byte 2 = 0x20 if active
+          [ 30, 0x78C, 2, "Mario Rank Upgrade 1"],
+          [ 31, 0x78E, 2, "Mario Rank Upgrade 2"],
+          [ 32, 0x790, 2, "Mario Rank Upgrade 3"],
+          [ 33, 0x792, 2, "Mario Rank Upgrade 4"],
+          [ 34, 0x794, 2, "Mario Rank Upgrade 5"], # Byte 1 = n, byte 2 = 0xE0 if active
+          [ 35, 0xA09, 1, "Badge Slot Count"],
+
+          [ 36, 0x836, 2, "Luigi Current HP"], #Fully Implemented
+          [ 37, 0x838, 2, "Luigi Current BP"], #WIP
+          [ 38, 0x83A, 2, "Luigi Max HP"], #WIP
+          [ 39, 0x83C, 2, "Luigi Max BP"], #WIP
+          [ 40, 0x83E, 2, "Luigi Power"], #WIP
+          [ 41, 0x840, 2, "Luigi Defense"], #WIP
+          [ 42, 0x842, 2, "Luigi Speed"], #WIP
+          [ 43, 0x844, 2, "Luigi Stache"], #WIP
+          [ 44, 0x846, 2, "Luigi BEANS Max HP"],
+          [ 45, 0x84A, 2, "Luigi BEANS Max BP"],
+          [ 46, 0x84E, 2, "Luigi BEANS Power"],
+          [ 47, 0x852, 2, "Luigi BEANS Defense"],
+          [ 48, 0x856, 2, "Luigi BEANS Speed"],
+          [ 49, 0x85A, 2, "Luigi BEANS Stache"],
+          [ 50, 0x848, 2, "Luigi LEVEL Max HP"],
+          [ 51, 0x84C, 2, "Luigi LEVEL Max BP"],
+          [ 52, 0x850, 2, "Luigi LEVEL Power"],
+          [ 53, 0x854, 2, "Luigi LEVEL Defense"],
+          [ 54, 0x858, 2, "Luigi LEVEL Speed"],
+          [ 55, 0x85C, 2, "Luigi LEVEL Stache"],
+
+          [ 56, 0x860, 3, "Luigi EXP"], #Fully Implemented
+          [ 57, 0x863, 1, "Luigi Level"], #WIP
+          [ 58, 0x864, 3, "Luigi EXP to next level"],
+          [ 59, 0x867, 1, "Luigi Rank"],
+          [ 60, 0x868, 2, "Luigi Boots"],
+          [ 61, 0x86A, 2, "Luigi Hammers"],
+          [ 62, 0x86C, 2, "Luigi Gear 1"], # Byte 1 = n, byte 2 = 0x30 if active
+          [ 63, 0x86E, 2, "Luigi Gear 2"],
+          [ 64, 0x870, 2, "Luigi Gear 3"],
+          [ 65, 0x872, 2, "Luigi Select Badge"], # Byte 1 = n, byte 2 = 0x20 if active
+          [ 66, 0x874, 2, "Luigi Rank Upgrade 1"],
+          [ 67, 0x876, 2, "Luigi Rank Upgrade 2"],
+          [ 68, 0x878, 2, "Luigi Rank Upgrade 3"],
+          [ 69, 0x87A, 2, "Luigi Rank Upgrade 4"],
+          [ 70, 0x87C, 2, "Luigi Rank Upgrade 5"], # Byte 1 = n, byte 2 = 0xE0 if active
+          [800, 0x684, 87, "Flags on which rooms you have visited"] #Set all 87 bytes to 0xFF
           ]
 
 
@@ -286,3 +326,40 @@ geartable = [[  0, 0x948, "Run-Down Boots"],
              [157, 0x9E5, "UNUSED GEAR: Mini Ring"],
              [158, 0x9E6, "Silver Statue"],
              [159, 0x9E7, "Gold Statue"]]
+
+allBonuses = ("None",
+              "Gear Slot +1 (1)",
+              "Gear Slot +1 (2)",
+              "Badge Slot +1",
+              "HP Up+",
+              "POW Up+",
+              "BP Up+",
+              "Quick Level",
+              "Iron Body",
+              "Jump Man",
+              "Hammerhead",
+              "Counterer",
+              "Shroom EXP",
+              "Big Lucky",
+              "Casual Bros.",
+              "Quick Healer")
+
+allRanks = ("Mushroom Rank",
+            "Shell Rank",
+            "Flower Rank",
+            "Star Rank",
+            "Rainbow Rank")
+
+
+blockflags = [[0, 0x0B8, 7, "0x056 Pi'illo Blimport"],
+             [1, 0x0B9, 0, "0x056 Pi'illo Blimport"],
+             [2, 0x0B9, 1, "0x056 Pi'illo Blimport"],
+             [3, 0x0B9, 2, "0x056 Pi'illo Blimport"],
+             [4, 0x0B9, 3, "0x058 Pi'illo Blimport"],
+             [5, 0x0B9, 4, "0x058 Pi'illo Blimport"],
+             [6, 0x0B9, 5, "0x058 Pi'illo Blimport"],
+             [7, 0x0B9, 6, "0x058 Pi'illo Blimport"],
+             [8, 0x0B9, 7, "0x01B Pi'illo Blimport"],
+             [9, 0x0BA, 1, "0x05B Pi'illo Blimport"],
+             [10, 0x0BA, 3, "0x05C Pi'illo Blimport"],
+             [11, 0x333, 6, "0x05C Pi'illo Blimport"]]
