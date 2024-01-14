@@ -73,7 +73,10 @@ values = [[  0, 0x74E, 2, "Mario Current HP"], #Fully Implemented
           [ 68, 0x878, 2, "Luigi Rank Upgrade 3"],
           [ 69, 0x87A, 2, "Luigi Rank Upgrade 4"],
           [ 70, 0x87C, 2, "Luigi Rank Upgrade 5"], # Byte 1 = n, byte 2 = 0xE0 if active
-          [800, 0x684, 87, "Flags on which rooms you have visited"] #Set all 87 bytes to 0xFF
+          [800, 0x684, 87, "Flags on which rooms you have visited"], #Set all 87 bytes to 0xFF
+          [ 72, 0x91C, 4, "Coins"],
+          [ 73, 0x11AC, 4, "File timer in milliseconds!"],
+          [ 74, 0x11A4, 1, "Boolean false: save file 1, boolean true: save file 2"]
           ]
 
 
@@ -125,10 +128,15 @@ flags = [[  0, 0x000, 0, "Hammer Front"],
          [ 38, 0x005, 4, "Luiginary Wall"],
          [ 39, 0x005, 5, "Luiginary Typhoon"],
 
-         [  40, 0x006, 1, "Shop flag: Reached Dozing Sands"],
-         [  41, 0x006, 3, "Shop flag: Reached Driftwood Shore"],
-         [  42, 0x006, 4, "Shop flag: Reached Somnom Woods"],
-         [ 800, 0x11A4, 3, "Boolean false: save file 1, boolean true: save file 2"]]
+         [ 40, 0x006, 1, "Shop flag: Reached Dozing Sands"],
+         [ 41, 0x006, 3, "Shop flag: Reached Driftwood Shore"],
+         [ 42, 0x006, 5, "Shop flag: Reached Somnom Woods"]]
+
+file1or2 = ["File 1", "File 2"]
+
+titleFlags = [[0, 0x4, 0, "?"],
+              [1, 0x4, 1, "?"],
+              [1, 0x4, 2, "?"]]
 
 itemtable = [[ 0, 0x920, "Mushroom"],
              [ 1, 0x921, "Super Mushroom"],
